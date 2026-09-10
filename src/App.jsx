@@ -1,3 +1,4 @@
+import { useState } from 'react' // 1. Importamos o useState
 import './App.css'
 import hero from './assets/hero.png'
 import Header from './components/header'
@@ -7,18 +8,30 @@ import Products from './components/Products'
 import Benefits from './components/Benefits'
 
 const App = () => {
+  // 2. Criamos o estado do carrinho e a função de adicionar aqui:
+  const [cart, setCart] = useState(0);
+
+  const addToCart = () => {
+    setCart((prev) => prev + 1);
+  };
+
   return (
     <div className="app">
-      <Header />
+      {/* 3. Passamos o cart para o Header atualizar o badge */}
+      <Header cart={cart} />
+
       <Hero 
-      titulo = "Ofertas imperdíveis para você"
-      subtitulo = "Até 30% de desconto em produtos selecionados. Aproveite!"
-      textoBotao = "Ver ofertas"
-      imagemHero = {hero}
+        titulo="Ofertas imperdíveis para você"
+        subtitulo="Até 30% de desconto em produtos selecionados. Aproveite!"
+        textoBotao="Ver ofertas"
+        imagemHero={hero}
       />
 
       <Categories />
-      <Products />
+
+      {/* 4. Passamos o addToCart para os botões dos produtos funcionarem */}
+      <Products addToCart={addToCart} />
+
       <Benefits />
 
       <footer id="contato" className="footer">
@@ -47,7 +60,6 @@ const App = () => {
 
         <p className="copyright">© 2026 ReactShop. Todos os direitos reservados.</p>
       </footer>
-
     </div>
   )
 }

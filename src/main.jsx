@@ -1,29 +1,27 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { createBrowserRouter } from 'react-router'
+import { RouterProvider } from 'react-router/dom'
 import './index.css'
-import App from './App.jsx'
-import { createBrowserRouter } from "react-router"
-import { RouterProvider } from "react-router/dom"
-import ProdutosPage from "./pages/ProdutosPage"
-import ContatoPage from "./pages/ContatoPage"
+import App from './App'
+import ProductsPage from './pages/ProductsPage'
+import ContatoPage from './pages/ContatoPage'
+import PageNotFound from './pages/PageNotFound'
+import ProductDetailPage from './pages/ProductDetailPage'
 
-const waze = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <App/>,
+    errorElement: <PageNotFound/>,
   },
-  {
-    path: "/produtos",
-    element: <ProdutosPage />,
-  },
-  {
-    path: "/contato",
-    element: <ContatoPage />,
-  },
+  {path: "produtos", element: <ProductsPage/>},
+  {path: "produtos/:idProduto", element: <ProductDetailPage/>},
+  {path: "contato", element: <ContatoPage />}
 ]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-  <RouterProvider router={waze} />,
-  </StrictMode>,
+    <RouterProvider router={router} />
+  </StrictMode>
 )

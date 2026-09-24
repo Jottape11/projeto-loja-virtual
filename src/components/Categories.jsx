@@ -1,31 +1,19 @@
+import CategoryList from "./CategoryList";
+
 const Categories = () => {
-    return (
-        <section className="categories">
-        <h2>Categorias</h2>
+  const listaCategorias = [
+    { id: 1, name: "Roupas", icon: "👕" },
+    { id: 2, name: "Eletrônicos", icon: "📱" },
+    { id: 3, name: "Calçados", icon: "👟" },
+    { id: 4, name: "Acessórios", icon: "🎒" },
+  ];
 
-        <div className="category-list">
-          <div className="category-card">
-            <span className="category-icon">👕</span>
-            <p>Roupas</p>
-          </div>
+  return (
+    <section className="categories">
+      <h2>Categorias</h2>
+      <CategoryList categories={listaCategorias} />
+    </section>
+  );
+};
 
-          <div className="category-card">
-            <span className="category-icon">📱</span>
-            <p>Eletrônicos</p>
-          </div>
-
-          <div className="category-card">
-            <span className="category-icon">👟</span>
-            <p>Calçados</p>
-          </div>
-
-          <div className="category-card">
-            <span className="category-icon">🎒</span>
-            <p>Acessórios</p>
-          </div>
-        </div>
-      </section>
-    )
-} 
-
-export default Categories
+export default Categories;

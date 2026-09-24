@@ -1,11 +1,7 @@
-import React from 'react'
-
 const ContatoPage = () => {
-  return (
-    <div>
-      <h1>Página de Contato</h1>
-    </div>
-  )
+    return (
+        <h1>Página de Contato</h1>
+    )
 }
 
 export default ContatoPage

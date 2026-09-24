@@ -1,65 +1,30 @@
-import { useState } from 'react' // 1. Importamos o useState
+import { useState } from 'react'
 import './App.css'
 import hero from './assets/hero.png'
-import Header from './components/header'
-import Hero from './components/Hero'
-import Categories from './components/Categories'
-import Products from './components/Products'
 import Benefits from './components/Benefits'
+import Categories from './components/Categories'
+import Footer from './components/Footer'
+import Header from './components/Header'
+import HeroSection from './components/HeroSection'
+import Products from './components/Products'
 
 const App = () => {
-  // 2. Criamos o estado do carrinho e a função de adicionar aqui:
-  const [cart, setCart] = useState(0);
 
-  const addToCart = () => {
-    setCart((prev) => prev + 1);
-  };
+  const [cartCount, setCartCount] = useState(0)
 
   return (
     <div className="app">
-      {/* 3. Passamos o cart para o Header atualizar o badge */}
-      <Header cart={cart} />
-
-      <Hero 
-        titulo="Ofertas imperdíveis para você"
-        subtitulo="Até 30% de desconto em produtos selecionados. Aproveite!"
-        textoBotao="Ver ofertas"
-        imagemHero={hero}
+      <Header cartCount={cartCount}/>
+      <HeroSection 
+        titulo ="Ofertas imperdíveis para você"
+        subtitulo = "Até 30% de desconto em produtos selecionados. Aproveite!"
+        textoBotao = "Ver ofertas"
+        imagemHero = {hero}
       />
-
       <Categories />
-
-      {/* 4. Passamos o addToCart para os botões dos produtos funcionarem */}
-      <Products addToCart={addToCart} />
-
+      <Products setCartCount={setCartCount} />
       <Benefits />
-
-      <footer id="contato" className="footer">
-        <div className="footer-column">
-          <h3>ReactShop</h3>
-          <p>A melhor loja virtual para você encontrar tudo o que precisa.</p>
-        </div>
-
-        <div className="footer-column">
-          <h3>Links úteis</h3>
-          <ul>
-            <li><a href="#produtos">Produtos</a></li>
-            <li><a href="#contato">Contato</a></li>
-            <li><a href="#produtos">Sobre nós</a></li>
-          </ul>
-        </div>
-
-        <div className="footer-column">
-          <h3>Redes sociais</h3>
-          <div className="social-icons">
-            <span className="icon-button">📘</span>
-            <span className="icon-button">📸</span>
-            <span className="icon-button">🐦</span>
-          </div>
-        </div>
-
-        <p className="copyright">© 2026 ReactShop. Todos os direitos reservados.</p>
-      </footer>
+      <Footer />
     </div>
   )
 }
